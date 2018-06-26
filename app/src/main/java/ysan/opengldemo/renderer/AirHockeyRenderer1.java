@@ -19,7 +19,7 @@ import ysan.opengldemo.util.TextResourceReader;
 /**
  * Created by YSAN on 2018/6/23
  */
-public class AirHockeyRenderer implements GLSurfaceView.Renderer {
+public class AirHockeyRenderer1 implements GLSurfaceView.Renderer {
 
     private final Context mContext;
     private static final int BYTES_PER_FLOAT = 4;
@@ -52,20 +52,7 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
             0f, 0.25f
     };
 
-    private final String vertexShaderCode =
-            "attribute vec4 vPosition;" +
-                    "void main() {" +
-                    "  gl_Position = vPosition;" +
-                    "}";
-
-    private final String fragmentShaderCode =
-            "precision mediump float;" +
-                    "uniform vec4 vColor;" +
-                    "void main() {" +
-                    "  gl_FragColor = vColor;" +
-                    "}";
-
-    public AirHockeyRenderer(Context context) {
+    public AirHockeyRenderer1(Context context) {
         this.mContext = context;
     }
 
@@ -85,9 +72,8 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
 
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         // 读取着色器代码
-        String vertexShaderSource = TextResourceReader.readTextFileFromResource(mContext, R.raw.simple_vertex_shader);
-        Log.i("ysan", "shader source = " + vertexShaderSource);
-        String fragmentShaderSource = TextResourceReader.readTextFileFromResource(mContext, R.raw.simple_fragment_shader);
+        String vertexShaderSource = TextResourceReader.readTextFileFromResource(mContext, R.raw.simple_vertex_shader1);
+        String fragmentShaderSource = TextResourceReader.readTextFileFromResource(mContext, R.raw.simple_fragment_shader1);
         // 编译源代码
         int vertexShader = ShaderHelper.compileVertexShader(vertexShaderSource);
         int fragmentShader = ShaderHelper.compileFragmentShader(fragmentShaderSource);
@@ -95,14 +81,12 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
         mProgram = ShaderHelper.linkProgram(vertexShader, fragmentShader);
 //         使用创建的 OpenGL 程序
         GLES20.glUseProgram(mProgram);
-        // 获取属性位置
-        aPositionLocation = GLES20.glGetAttribLocation(mProgram, A_POSITION);
-        // 使能数据属性
-        GLES20.glEnableVertexAttribArray(aPositionLocation);
-        // 告诉OpenGL可以在缓冲区 vertexData 中找到数据
-        GLES20.glVertexAttribPointer(aPositionLocation, POSITION_COMPONENT_COUNT, GLES20.GL_FLOAT, false, 0, vertexData);
         // 获取uniform值的位置，存入uColorLocation
         uColorLocation = GLES20.glGetUniformLocation(mProgram, U_COLOR);
+        // 获取属性位置
+        aPositionLocation = GLES20.glGetAttribLocation(mProgram, A_POSITION);
+        // 告诉OpenGL可以在缓冲区 vertexData 中找到数据
+        GLES20.glVertexAttribPointer(aPositionLocation, POSITION_COMPONENT_COUNT, GLES20.GL_FLOAT, false, 0, vertexData);
     }
 
     @Override
@@ -117,15 +101,8 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
         Log.i("ysan", "onDrawFrame");
         // 清空屏幕，这会擦除屏幕上的所有颜色，并用之前glClearColor()调用定义的颜色填充整个屏幕
         GLES20.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        GLES20.glUseProgram(mProgram);
-        // 获取属性位置
-        aPositionLocation = GLES20.glGetAttribLocation(mProgram, A_POSITION);
         // 使能数据属性
         GLES20.glEnableVertexAttribArray(aPositionLocation);
-        // 告诉OpenGL可以在缓冲区 vertexData 中找到数据
-        GLES20.glVertexAttribPointer(aPositionLocation, POSITION_COMPONENT_COUNT, GLES20.GL_FLOAT, false, 0, vertexData);
-        // 获取uniform值的位置，存入uColorLocation
-        uColorLocation = GLES20.glGetUniformLocation(mProgram, U_COLOR);
         // 更新着色器代码中的 u_Color 的值
         // 绘制三角形, index 从 0 到 6
         GLES20.glUniform4f(uColorLocation, 1.0f, 1.0f, 1.0f, 1.0f);

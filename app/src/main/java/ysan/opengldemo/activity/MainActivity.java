@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import ysan.opengldemo.renderer.AirHockeyRenderer;
+import ysan.opengldemo.renderer.AirHockeyRenderer2_1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,10 +29,8 @@ public class MainActivity extends AppCompatActivity {
         final boolean supportEs2 = configurationInfo.reqGlEsVersion >= 0x20000;
         Log.i("ysan", "support = " + supportEs2);
         mGLSurfaceView.setEGLContextClientVersion(2);
-        mGLSurfaceView.setRenderer(new AirHockeyRenderer(this));
+        mGLSurfaceView.setRenderer(new AirHockeyRenderer2_1(this));
         setContentView(mGLSurfaceView);
-//        mGLSurfaceView = new MyGLSurfaceView(this);
-//        setContentView(mGLSurfaceView);
     }
 
     @Override
