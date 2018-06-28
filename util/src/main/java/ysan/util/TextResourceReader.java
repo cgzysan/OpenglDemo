@@ -1,4 +1,4 @@
-package ysan.opengldemo.util;
+package ysan.util;
 
 import android.content.Context;
 import android.content.res.Resources;

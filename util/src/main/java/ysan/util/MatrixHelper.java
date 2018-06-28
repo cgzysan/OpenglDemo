@@ -1,4 +1,4 @@
-package ysan.opengldemo.util;
+package ysan.util;
 
 /**
  * Created by YSAN on 2018/6/27

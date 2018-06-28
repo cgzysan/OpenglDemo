@@ -1,8 +1,7 @@
-package ysan.opengldemo.util;
-
-import android.util.Log;
+package ysan.util;
 
 import android.opengl.GLES20;
+import android.util.Log;
 
 /**
  * Created by YSAN on 2018/6/25

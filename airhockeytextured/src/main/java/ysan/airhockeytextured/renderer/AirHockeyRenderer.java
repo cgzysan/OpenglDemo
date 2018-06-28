@@ -1,4 +1,4 @@
-package ysan.opengldemo.renderer;
+package ysan.airhockeytextured.renderer;
 
 import android.content.Context;
 import android.opengl.GLES20;
@@ -13,14 +13,14 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import ysan.opengldemo.R;
+import ysan.airhockeytextured.R;
 import ysan.util.ShaderHelper;
 import ysan.util.TextResourceReader;
 
 /**
- * Created by YSAN on 2018/6/23
+ * Created by YSAN on 2018/6/28
  */
-public class AirHockeyRenderer3 implements GLSurfaceView.Renderer {
+public class AirHockeyRenderer implements GLSurfaceView.Renderer {
 
     private final Context mContext;
     private static final int BYTES_PER_FLOAT = 4;
@@ -47,12 +47,12 @@ public class AirHockeyRenderer3 implements GLSurfaceView.Renderer {
             // Order of coordinates: X, Y, Z, W, R, G, B
 
             // Triangle fan
-//            0f, 0f, 0f, 1.5f, 1f, 1f, 1f,
-//            -0.5f, -0.8f, 0f, 1f, 0.7f, 0.7f, 0.7f,
-//            0.5f, -0.8f, 0f, 1f, 0.7f, 0.7f, 0.7f,
-//            0.5f, 0.8f, 0f, 2f, 0.7f, 0.7f, 0.7f,
-//            -0.5f, 0.8f, 0f, 2f, 0.7f, 0.7f, 0.7f,
-//            -0.5f, -0.8f, 0f, 1f, 0.7f, 0.7f, 0.7f,
+            //            0f, 0f, 0f, 1.5f, 1f, 1f, 1f,
+            //            -0.5f, -0.8f, 0f, 1f, 0.7f, 0.7f, 0.7f,
+            //            0.5f, -0.8f, 0f, 1f, 0.7f, 0.7f, 0.7f,
+            //            0.5f, 0.8f, 0f, 2f, 0.7f, 0.7f, 0.7f,
+            //            -0.5f, 0.8f, 0f, 2f, 0.7f, 0.7f, 0.7f,
+            //            -0.5f, -0.8f, 0f, 1f, 0.7f, 0.7f, 0.7f,
 
             0f, 0f, 0f, 1f, 1f, 1f, 1f,
             -0.5f, -0.8f, 0f, 1f, 0.7f, 0.7f, 0.7f,
@@ -88,8 +88,8 @@ public class AirHockeyRenderer3 implements GLSurfaceView.Renderer {
 
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         // 读取着色器代码
-        String vertexShaderSource = TextResourceReader.readTextFileFromResource(mContext, R.raw.simple_vertex_shader2);
-        String fragmentShaderSource = TextResourceReader.readTextFileFromResource(mContext, R.raw.simple_fragment_shader2);
+        String vertexShaderSource = TextResourceReader.readTextFileFromResource(mContext, R.raw.texture_vertex_shader);
+        String fragmentShaderSource = TextResourceReader.readTextFileFromResource(mContext, R.raw.texture_fragment_shader);
         // 编译源代码
         int vertexShader = ShaderHelper.compileVertexShader(vertexShaderSource);
         int fragmentShader = ShaderHelper.compileFragmentShader(fragmentShaderSource);
@@ -117,7 +117,7 @@ public class AirHockeyRenderer3 implements GLSurfaceView.Renderer {
         // 设置视口的尺寸，告诉 OpenGL 可以用来渲染的 surface 的大小
         GLES20.glViewport(0, 0, width, height);
         Matrix.perspectiveM(projectionMatrix, 0, 45, (float) width / (float) height, 1f, 10f);
-//        MatrixHelper.perspectiveM(projectionMatrix, 45, (float) width / (float) height, 1f, 10f);
+        //        MatrixHelper.perspectiveM(projectionMatrix, 45, (float) width / (float) height, 1f, 10f);
         Matrix.setIdentityM(modelMatrix, 0);
         Matrix.translateM(modelMatrix, 0, 0f, 0f, -3f);
         Matrix.rotateM(modelMatrix, 0, -60f, 1f, 0f, 0f);

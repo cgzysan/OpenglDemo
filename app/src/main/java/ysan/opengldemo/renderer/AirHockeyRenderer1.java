@@ -13,8 +13,8 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import ysan.opengldemo.R;
-import ysan.opengldemo.util.ShaderHelper;
-import ysan.opengldemo.util.TextResourceReader;
+import ysan.util.ShaderHelper;
+import ysan.util.TextResourceReader;
 
 /**
  * Created by YSAN on 2018/6/23
