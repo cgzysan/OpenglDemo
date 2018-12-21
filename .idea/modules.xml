@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OpenglDemo.iml" filepath="$PROJECT_DIR$/OpenglDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/airhockeytextured/airhockeytextured.iml" filepath="$PROJECT_DIR$/airhockeytextured/airhockeytextured.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/util/util.iml" filepath="$PROJECT_DIR$/util/util.iml" />
     </modules>
   </component>
 </project>
